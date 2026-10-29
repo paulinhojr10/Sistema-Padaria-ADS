@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Padaria Ki-Delicia</title>
+    <style>
+        body { font-family: Arial; background-color: #f4f4f4; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; margin-bottom: 20px; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { background-color: #28a745; color: white; padding: 10px; border: none; width: 100%; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container" id="telaLogin">
+        <h2>Login</h2>
+        <input type="text" id="user" placeholder="Usuário">
+        <input type="password" id="pass" placeholder="Senha">
+        <button onclick="fazerLogin()">Entrar</button>
+    </div>
+
+    <div class="container" id="telaFiado" style="display: none;">
+        <h2>Registrar Fiado</h2>
+        <input type="text" id="cliente" placeholder="Nome do Cliente">
+        <input type="number" id="valor" placeholder="Valor da Compra (R$)">
+        <button onclick="registrarFiado()">Salvar Fiado</button>
+        <p id="mensagem" style="color: green; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        function fazerLogin() {
+            let user = document.getElementById('user').value;
+            let pass = document.getElementById('pass').value;
+            if (user === "admin" && pass === "1234") {
+                document.getElementById('telaLogin').style.display = 'none';
+                document.getElementById('telaFiado').style.display = 'block';
+                alert("Login realizado com sucesso!");
+            } else {
+                alert("Usuário ou senha incorretos.");
+            }
+        }
+
+        function registrarFiado() {
+            let cliente = document.getElementById('cliente').value;
+            let valor = document.getElementById('valor').value;
+            if (cliente !== "" && valor > 0) {
+                document.getElementById('mensagem').innerText = "Fiado de R$ " + valor + " registrado para " + cliente + "!";
+            } else {
+                alert("Preencha todos os campos corretamente.");
+            }
+        }
+    </script>
+</body>
+</html>
